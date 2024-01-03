@@ -14,4 +14,12 @@ public class WebController {
         model.addAttribute("asset", asset);
         return "index";
     }
+
+    @RequestMapping(value = "/number")
+    public String getNumber(Model model) {
+        var number = (int) (Math.random() * 10);
+
+        model.addAttribute("number", number);
+        return "fragments/yo :: random-number";
+    }
 }

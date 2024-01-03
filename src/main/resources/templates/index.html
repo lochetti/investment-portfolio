@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<script>
+    const getData = () => {
+
+        fetch('number').then(function (response) {
+            return response.text();
+        }).then(function (html) {
+            console.log(html)
+            document.getElementById("random_number").innerHTML = html;
+        }).catch(function (err) {
+            console.warn('Something went wrong.', err);
+        });
+    }
+</script>
 <head>
     <meta charset="UTF-8" />
     <link href = "css/styles.css" rel = "stylesheet"/>
@@ -8,5 +21,7 @@
 <body>
 <h4>Hello :)</h4>
 <h4 th:text="${asset.ticker()}"></h4>
+<p><input type="button" onclick="getData()" value="Get Data from server"/></p>
+<div id="random_number"></div>
 </body>
 </html>
